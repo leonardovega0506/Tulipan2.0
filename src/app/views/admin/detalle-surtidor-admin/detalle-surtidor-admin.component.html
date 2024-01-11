@@ -1,0 +1,49 @@
+
+
+<ng-template #editarSurtidor let-modal>
+  <form (ngSubmit)="actualizarSurtidor()">
+    <input type="text" placeholder="Nombre" [(ngModel)]="surtidor.nombrePersona" name="nombrePersona">
+    <br>
+    <input type="text" placeholder="Clave" [(ngModel)]="surtidor.clavePersonal" name="clavePersonal">
+    <input type="submit" value="Enviar">
+  </form>
+</ng-template>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="image-area">
+      <div class="img-wrapper">
+        <img src="/assets/user.jpg" style="width: 200px; height: 400px;" alt="img user">
+        <h2>{{surtidor?.nombrePersona}}</h2>
+        <ul>
+          <li class="atributo">Clave</li>
+          <li>{{surtidor?.clavePersonal}}</li>
+          <li>Estatus</li>
+          <li>{{surtidor?.estatusPersonal}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-md-center botones">
+    <button class="col-md-3 mx-4 btn" (click)="abrirModal(editarSurtidor)">Editar</button>
+    <button class="col-md-3 btn" (click)="eliminarSurtidor()">Eliminar</button>
+  </div>
+  <div class="row justify-content-md-center tabla">
+    <table>
+        <thead>
+          <th>#</th>
+          <th>Numero</th>
+          <th>Estatus</th>
+          <th>Fecha</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let picking of surtidor?.listaPicking">
+            <td>{{picking.idPicking}}</td>
+            <td>{{picking.absEntry}}</td>
+            <td>{{picking.estatus}}</td>
+            <td>{{picking.pickDate}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>

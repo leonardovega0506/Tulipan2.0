@@ -1,0 +1,59 @@
+  <ng-template #crearSurtidor let-modal>
+    <form (ngSubmit)="guardarSurtidor()">
+      <input type="text" placeholder="Nombre" [(ngModel)]="surtidor.nombrePersona" name="nombrePersona">
+      <br>
+      <input type="text" placeholder="Clave" [(ngModel)]="surtidor.clavePersonal" name="clavePersonal">
+      <input type="submit" value="Enviar">
+    </form>
+  </ng-template>
+
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <h1 class="titulo justify-content-md-center">Surtidor</h1>
+      </div>
+    </div>
+    <div class="row justify-content-md-center mt-5">
+      <button (click)="abrirModal(crearSurtidor)" class="btn btn-danger col-md-4">Crear surtidor</button>
+      <!--Tabla-->
+      <div class="mt-5">
+        <div class="mb-2 d-flex justify-content-between align-items-center">
+          <div class="position-relative">
+            <span class="position-absolute search"><i class="fa fa-search"></i></span>
+            <input class="form-control w-100" placeholder="Buscar por nombre">
+          </div>
+          <div class="px-2">
+            <span>Filters <i class="fa fa-angle-down"></i></span>
+            <i class="fa fa-ellipsis-h ms-3"></i>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-responsive table-borderless">
+            <thead>
+              <tr class="bg-light">
+                <th scope="col" width="5%">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">Clave</th>
+                <th scope="col">Detalle</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let surtidor of listaSurtidor">
+                <tr>
+                  <td>{{surtidor.idPersonal}}</td>
+                  <td>{{surtidor.nombrePersona}}</td>
+                  <td>{{surtidor.estatusPersonal}}</td>
+                  <td>{{surtidor.clavePersonal}}</td>
+                  <td><a [routerLink]="'/admin/surtidor/'+surtidor.idPersonal">Detalles</a></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+   

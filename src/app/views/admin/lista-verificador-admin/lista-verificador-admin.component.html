@@ -1,0 +1,63 @@
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <h1 class="titulo justify-content-md-center">Verificador</h1>
+      </div>
+    </div>
+    <div class="row justify-content-md-center mt-5">
+      <button (click)="abrirModal(crearVerificador)" class="btn btn-danger col-md-4">Crear verificador</button>
+      <!--Tabla-->
+      <div class="mt-5">
+        <div class="mb-2 d-flex justify-content-between align-items-center">
+          <div class="position-relative">
+            <span class="position-absolute search"><i class="fa fa-search"></i></span>
+            <input class="form-control w-100" placeholder="Buscar por nombre">
+          </div>
+          <div class="px-2">
+            <span>Filters <i class="fa fa-angle-down"></i></span>
+            <i class="fa fa-ellipsis-h ms-3"></i>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-responsive table-borderless">
+            <thead>
+              <tr class="bg-light">
+                <th scope="col" width="5%">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">Clave</th>
+                <th scope="col">Mesa</th>
+                <th scope="col">Detalle</th>
+                
+              </tr>
+            </thead>
+            <tbody *ngFor="let surtidor of listaVerificador">
+              <tr *ngFor="let verificador of listaVerificador">
+                <td>{{verificador.idPersonal}}</td>
+                <td>{{verificador.nombrePersona}}</td>
+                <td>{{verificador.estatusPersonal}}</td>
+                <td>{{verificador.clavePersonal}}</td>
+                <td>{{verificador.mesaPesonal}}</td>
+                <td><a [routerLink]="'/admin/verificador/'+verificador.idPersonal">Detalles</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #crearVerificador let-modal>
+    <form (ngSubmit)="guardarVerificador()">
+      <input type="text" placeholder="Nombre" [(ngModel)]="verificador.nombrePersona" name="nombrePersona">
+      <br>
+      <input type="text" placeholder="Clave" [(ngModel)]="verificador.clavePersonal" name="clavePersonal">
+      <br>
+      <input type="text" placeholder="Mesa" [(ngModel)]="verificador.mesaPersonal" name="mesaPersonal">
+      <input type="submit" value="Enviar">
+    </form>
+  </ng-template>
+
+
+
+
+   

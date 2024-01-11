@@ -1,0 +1,59 @@
+
+
+<button (click)="abrirModal(editarVerificador)">Editar</button>
+<button (click)="eliminarVerificador()">Eliminar</button>
+
+
+
+<ng-template #editarVerificador let-modal>
+    <form (ngSubmit)="actualizarVerificador()">
+      <input type="text" placeholder="Nombre" [(ngModel)]="verificador.nombrePersona" name="nombrePersona">
+      <br>
+      <input type="text" placeholder="Clave" [(ngModel)]="verificador.clavePersonal" name="clavePersonal">
+      <br>
+      <input type="text" placeholder="Mesa" [(ngModel)]="verificador.mesaPersonal" name="mesaPersonal">
+      <input type="submit" value="Enviar">
+    </form>
+  </ng-template>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+      <div class="image-area">
+        <div class="img-wrapper">
+          <img src="/assets/user.jpg" style="width: 200px; height: 400px;" alt="img user">
+          <h2>{{verificador?.nombrePersona}}</h2>
+          <ul>
+            <li class="atributo">Clave</li>
+            <li>{{verificador?.clavePersonal}}</li>
+            <li>Estatus</li>
+            <li>{{verificador?.estatusPersonal}}</li>
+            <li>Mesa</li>
+            <li>{{verificador?.mesaPersonal}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-md-center botones">
+      <button class="col-md-3 mx-4 btn" (click)="abrirModal(editarVerificador)">Editar</button>
+      <button class="col-md-3 btn" (click)="eliminarVerificador()">Eliminar</button>
+    </div>
+    <div class="row justify-content-md-center tabla">
+      <table>
+          <thead>
+            <th>#</th>
+            <th>Numero</th>
+            <th>Estatus</th>
+            <th>Fecha</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let picking of verificador?.listaPicking">
+              <td>{{picking.idPicking}}</td>
+              <td>{{picking.absEntry}}</td>
+              <td>{{picking.estatus}}</td>
+              <td>{{picking.pickDate}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+  

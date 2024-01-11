@@ -1,0 +1,117 @@
+.titulo {
+    position: relative;
+    left: 50%;
+    width: 150px;
+    --b: 5px; /* border thickness */
+    --c: #0000 25%,darkblue 0; /* define the color here */
+    padding: 10px;
+    background:
+      conic-gradient(from 90deg  at top    var(--b) left  var(--b),var(--c)) 0    0,
+      conic-gradient(from 180deg at top    var(--b) right var(--b),var(--c)) 100% 0,
+      conic-gradient(from 0deg   at bottom var(--b) left  var(--b),var(--c)) 0    100%,
+      conic-gradient(from -90deg at bottom var(--b) right var(--b),var(--c)) 100% 100%;
+    background-size: 50px 50px; /* adjust border length here */
+    background-repeat: no-repeat;
+    transition: .6s;
+    cursor: pointer;
+    justify-content: center
+  }
+  
+  .titulo:hover {
+    background-size: 51% 51%;
+  }
+.box{
+    margin:0 10%;
+    height: 1130px;
+    overflow: hidden;
+    padding: 0px 0 40px 60px
+}
+
+.box ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    transition: all 0.5s linear;
+    top:0
+}
+
+.box ul:last-of-type{top:80px}
+
+.box ul:before{
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+    border:1px dashed ;
+    position: absolute;
+    top:0;
+    left:30px
+}
+
+.box ul li{
+    margin: 20px 60px 60px;
+    position: relative;
+    padding: 10px 20px;
+    background: #4b3eb8;
+    color: #fff;
+    border-radius: 10px;
+    line-height: 20px;
+    width: 35%
+}
+
+
+.box ul li > span{
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+    border:1px solid #000;
+    position: absolute;
+    top:0;
+    left:-30px
+}
+
+.box ul li > span:before,.box ul li > span:after{
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    border:2px solid #000;
+    position: absolute;
+    left:-7.5px
+}
+
+.box ul li > span:before{top:-10px}
+.box ul li > span:after{top:95%}
+
+.box .title{
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 5px
+}
+
+.box .info:first-letter{text-transform: capitalize;line-height: 1.7}
+
+.box .name{
+    margin-top: 10px;
+    text-transform: capitalize;
+    font-style: italic;
+    text-align: right;
+    margin-right: 20px
+}
+
+
+.box .time span{
+    position: absolute;
+    left: -100px;
+    color:#fff;
+    font-size:80%;
+    font-weight: bold;
+}
+.box .time span:first-child{top:-16px}
+.box .time span:last-child{top:94%}
+
+

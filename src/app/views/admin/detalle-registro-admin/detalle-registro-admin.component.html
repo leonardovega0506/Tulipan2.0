@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="col-md-auto">
+        <h1 class="titulo justify-content-md-center">Registro</h1>
+      </div>
+    <div class="row justify-content-md-center">
+        <div class="col-md-6">
+            <div class="box">
+                <ul>
+                    <li>
+                        <span></span>
+                        <div class="title">Por Surtir</div>
+                        <div class="info">El registro {{registro?.docNum}} fue puesto a por surtir</div>
+                        <div class="time">
+                            <span>{{registro?.dateSurtir}}</span>
+                            <span>{{registro?.timeSurtir}}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span></span>
+                        <div class="title">Inicio Surtido</div>
+                        <div class="info">El registro {{registro?.docNum}} ha sido puesto en inicio de surtido</div>
+                        <div class="name">-  {{registro?.surtidor?.nombrePersona}} -</div>
+                        <div class="time">
+                            <span>{{registro?.fechaInicioSurtido}}</span>
+                            <span>{{registro?.horafechaInicioSurtido}}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span></span>
+                        <div class="title">Termino surtido</div>
+                        <div class="info">Elregistro {{registro?.docNum}} ha sido en puesto de termino de surtido</div>
+                        <div class="name">- {{registro?.surtidor?.nombrePersona}} -</div>
+                        <div class="time">
+                            <span><h3>{{registro?.fechaTerminoSurtido}}</h3></span>
+                            <span>{{registro?.horaTerminoSurtido}}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span></span>
+                        <div class="title">Inicio Verificado</div>
+                        <div class="info">El registro {{registro?.docNum}} ha puesto en inicio verificado</div>
+                        <div class="name">- {{registro?.verificador?.nombrePersona}} -</div>
+                        <div class="time">
+                            <span><h3>{{registro?.fechaInicioVerificado}}</h3></span>
+                            <span>{{registro?.horaInicioVerificado}}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span></span>
+                        <div class="title">Termino Verificado</div>
+                        <div class="info">El registro {{registro?.docNum}} ha puesto en termino verificado</div>
+                        <div class="name">- {{registro?.verificador?.nombrePersona}} -</div>
+                        <div class="time">
+                            <span><h3>{{registro?.fechaTerminoVerificado}}</h3></span>
+                            <span>{{registro?.horaTerminoVerificado}}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

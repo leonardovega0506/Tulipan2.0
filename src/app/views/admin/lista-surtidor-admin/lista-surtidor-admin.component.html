@@ -1,11 +1,30 @@
-  <ng-template #crearSurtidor let-modal>
-    <form (ngSubmit)="guardarSurtidor()">
-      <input type="text" placeholder="Nombre" [(ngModel)]="surtidor.nombrePersona" name="nombrePersona">
-      <br>
-      <input type="text" placeholder="Clave" [(ngModel)]="surtidor.clavePersonal" name="clavePersonal">
-      <input type="submit" value="Enviar">
-    </form>
-  </ng-template>
+<!--Modal para buscar por itemCode-->
+<ng-template #crearSurtidor let-modal>
+  <form (ngSubmit)="guardarSurtidor()">
+    <!--Cabecera-->
+    <div class="modal-header fondo-cabecera">
+      <h4 class="modal-title">Buscar Item por código</h4>
+      <button class="btn close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Cuerpo-->
+    <div class="modal-body fondo-modal">
+      <p>Nombre</p>
+      <input type="text"  [(ngModel)]="surtidor.nombrePersona" name="nombrePersona"  placeholder="Nombre"
+      class="form-control mr-sm-1">
+      <p>Clave</p>
+      <input type="text"  [(ngModel)]="surtidor.clavePersonal" name="clavePersonal" placeholder="Clave"
+      class="form-control mr-sm-2">
+    </div>
+    <!--Footer-->
+    <div class="modal-footer">
+      <button type="submit" class="btn button">Buscar</button>
+      <button type="button" class="btn  button-2" (click)="modal.close()">Cerrar</button>
+    </div>
+  </form>
+</ng-template>
+
 
   <div class="container">
     <div class="row justify-content-md-center">
@@ -14,7 +33,7 @@
       </div>
     </div>
     <div class="row justify-content-md-center mt-5">
-      <button (click)="abrirModal(crearSurtidor)" class="btn btn-danger col-md-4">Crear surtidor</button>
+      <button (click)="abrirModal(crearSurtidor)" class="button col-md-4">Crear surtidor</button>
       <!--Tabla-->
       <div class="mt-5">
         <div class="mb-2 d-flex justify-content-between align-items-center">
@@ -23,37 +42,46 @@
             <input class="form-control w-100" placeholder="Buscar por nombre">
           </div>
           <div class="px-2">
-            <span>Filters <i class="fa fa-angle-down"></i></span>
-            <i class="fa fa-ellipsis-h ms-3"></i>
+            <div class="col-sm-4">
+              <!--Mostrar la cantidad de registros que traera-->
+              <form class="form-horizontal pull-right">
+                <div class="form-group">
+                  <select style="font-family: 'Raleway-Medium';" class="form-control" id="cantidad"
+                    (change)="rellenarSurtidor(pageActual,$event.target['value'],'idItem','asc')" [(ngModel)]="cantidad"
+                    name="cantidad">
+                    <option style="font-family: 'Raleway-Medium';" [value]="5">5</option>
+                    <option style="font-family: 'Raleway-Medium';" [value]="10">10</option>
+                    <option style="font-family: 'Raleway-Medium';" [value]="15">15</option>
+                    <option style="font-family: 'Raleway-Medium';" [value]="20">20</option>
+                  </select>
+                  <label for="cantidad" display="inline" style="font-family: 'Raleway-Medium';">Cantidad</label>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
         <div class="table-responsive">
           <table class="table table-responsive table-borderless">
             <thead>
               <tr class="bg-light">
-                <th scope="col" width="5%">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Estatus</th>
-                <th scope="col">Clave</th>
-                <th scope="col">Detalle</th>
+                <th style="font-family: 'Raleway-Medium';" scope="col" width="5%">#</th>
+                <th style="font-family: 'Raleway-Medium';" scope="col">Nombre</th>
+                <th style="font-family: 'Raleway-Medium';" scope="col">Estatus</th>
+                <th style="font-family: 'Raleway-Medium';" scope="col">Clave</th>
+                <th style="font-family: 'Raleway-Medium';" scope="col">Detalle</th>
               </tr>
             </thead>
             <tbody *ngFor="let surtidor of listaSurtidor">
-                <tr>
-                  <td>{{surtidor.idPersonal}}</td>
-                  <td>{{surtidor.nombrePersona}}</td>
-                  <td>{{surtidor.estatusPersonal}}</td>
-                  <td>{{surtidor.clavePersonal}}</td>
-                  <td><a [routerLink]="'/admin/surtidor/'+surtidor.idPersonal">Detalles</a></td>
-                </tr>
+              <tr>
+                <td style="font-family: 'Raleway-Medium';">{{surtidor.idPersonal}}</td>
+                <td style="font-family: 'Raleway-Medium';">{{surtidor.nombrePersona}}</td>
+                <td style="font-family: 'Raleway-Medium';">{{surtidor.estatusPersonal}}</td>
+                <td style="font-family: 'Raleway-Medium';">{{surtidor.clavePersonal}}</td>
+                <td style="font-family: 'Raleway-Medium';"><a style="font-family: 'Raleway-Medium';" class="btn" [routerLink]="'/admin/surtidor/'+surtidor.idPersonal">Detalles</a></td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-  
-
-
-
-   

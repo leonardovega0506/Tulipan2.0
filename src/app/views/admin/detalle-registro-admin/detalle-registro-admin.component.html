@@ -6,7 +6,7 @@
         <div class="col-md-6">
             <div class="box">
                 <ul>
-                    <li>
+                    <li *ngIf="registro?.dateSurtir!=null">
                         <span></span>
                         <div class="title">Por Surtir</div>
                         <div class="info">El registro {{registro?.docNum}} fue puesto a por surtir</div>
@@ -15,7 +15,7 @@
                             <span>{{registro?.timeSurtir}}</span>
                         </div>
                     </li>
-                    <li>
+                    <li *ngIf="registro?.fechaInicioSurtido">
                         <span></span>
                         <div class="title">Inicio Surtido</div>
                         <div class="info">El registro {{registro?.docNum}} ha sido puesto en inicio de surtido</div>
@@ -25,7 +25,7 @@
                             <span>{{registro?.horafechaInicioSurtido}}</span>
                         </div>
                     </li>
-                    <li>
+                    <li *ngIf="registro?.fechaTerminoSurtido!=null">
                         <span></span>
                         <div class="title">Termino surtido</div>
                         <div class="info">Elregistro {{registro?.docNum}} ha sido en puesto de termino de surtido</div>
@@ -35,7 +35,7 @@
                             <span>{{registro?.horaTerminoSurtido}}</span>
                         </div>
                     </li>
-                    <li>
+                    <li *ngIf="registro?.fechaInicioVerificado!=null">
                         <span></span>
                         <div class="title">Inicio Verificado</div>
                         <div class="info">El registro {{registro?.docNum}} ha puesto en inicio verificado</div>
@@ -45,7 +45,7 @@
                             <span>{{registro?.horaInicioVerificado}}</span>
                         </div>
                     </li>
-                    <li>
+                    <li *ngIf="registro?.fechaTerminoVerificado">
                         <span></span>
                         <div class="title">Termino Verificado</div>
                         <div class="info">El registro {{registro?.docNum}} ha puesto en termino verificado</div>

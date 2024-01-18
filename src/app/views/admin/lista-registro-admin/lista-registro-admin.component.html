@@ -11,11 +11,24 @@
       <div class="mb-2 d-flex justify-content-between align-items-center">
         <div class="position-relative">
           <span class="position-absolute search"><i class="fa fa-search"></i></span>
-          <input class="form-control w-100" placeholder="Buscar por nombre">
         </div>
         <div class="px-2">
-          <span>Filters <i class="fa fa-angle-down"></i></span>
-          <i class="fa fa-ellipsis-h ms-3"></i>
+          <div class="col-sm-4">
+            <!--Mostrar la cantidad de registros que traera-->
+            <form class="form-horizontal pull-right">
+              <div class="form-group">
+                <select style="font-family: 'Raleway-Medium';" class="form-control" id="cantidad"
+                  (change)="rellenarPicking(pageActual,$event.target['value'],'idItem','asc')" [(ngModel)]="cantidad"
+                  name="cantidad">
+                  <option style="font-family: 'Raleway-Medium';" [value]="5">5</option>
+                  <option style="font-family: 'Raleway-Medium';" [value]="10">10</option>
+                  <option style="font-family: 'Raleway-Medium';" [value]="15">15</option>
+                  <option style="font-family: 'Raleway-Medium';" [value]="20">20</option>
+                </select>
+                <label for="cantidad" display="inline" style="font-family: 'Raleway-Medium';">Cantidad</label>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
       <div class="table-responsive">
@@ -39,7 +52,7 @@
                 <td>{{registro.estatusRegistro}}</td>
                 <td>{{registro.surtidor?.nombrePersona}}</td>
                 <td>{{registro.verificador?.nombrePersona}}</td>
-                <td><a [routerLink]="'/admin/registro/'+registro.idRegistro">Detalles</a></td>
+                <td><a class="btn button-arounder " [routerLink]="'/admin/registro/'+registro.idRegistro">Detalles</a></td>
               </tr>
           </tbody>
         </table>

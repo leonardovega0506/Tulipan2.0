@@ -1,59 +1,75 @@
+<!--Modal para buscar por itemCode-->
+<ng-template #editarSurtidor let-modal>
+  <form (ngSubmit)="actualizarVerificador()">
+    <!--Cabecera-->
+    <div class="modal-header fondo-cabecera">
+      <h4 class="modal-title">Actualizar surtidor</h4>
+      <button class="btn close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Cuerpo-->
+    <div class="modal-body fondo-modal">
+      <p>Nombre</p>
+      <input type="text"  [(ngModel)]="verificador.nombrePersona" name="nombrePersona"  placeholder="Nombre"
+      class="form-control mr-sm-1">
+      <p>Clave</p>
+      <input type="text"  [(ngModel)]="verificador.clavePersonal" name="clavePersonal" placeholder="Clave"
+      class="form-control mr-sm-2">
+      <p>Mesa</p>
+      <input type="text"  [(ngModel)]="verificador.mesaPersonal" name="clavePersonal" placeholder="Mesa"
+      class="form-control mr-sm-2">
+    </div>
+    <!--Footer-->
+    <div class="modal-footer">
+      <button type="submit" class="btn button">Actualizar</button>
+      <button type="button" class="btn  button-2" (click)="modal.close()">Cerrar</button>
+    </div>
+  </form>
+</ng-template>
 
-
-<button (click)="abrirModal(editarVerificador)">Editar</button>
-<button (click)="eliminarVerificador()">Eliminar</button>
-
-
-
-<ng-template #editarVerificador let-modal>
-    <form (ngSubmit)="actualizarVerificador()">
-      <input type="text" placeholder="Nombre" [(ngModel)]="verificador.nombrePersona" name="nombrePersona">
-      <br>
-      <input type="text" placeholder="Clave" [(ngModel)]="verificador.clavePersonal" name="clavePersonal">
-      <br>
-      <input type="text" placeholder="Mesa" [(ngModel)]="verificador.mesaPersonal" name="mesaPersonal">
-      <input type="submit" value="Enviar">
-    </form>
-  </ng-template>
 
 <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="image-area">
-        <div class="img-wrapper">
-          <img src="/assets/user.jpg" style="width: 200px; height: 400px;" alt="img user">
-          <h2>{{verificador?.nombrePersona}}</h2>
-          <ul>
-            <li class="atributo">Clave</li>
-            <li>{{verificador?.clavePersonal}}</li>
-            <li>Estatus</li>
-            <li>{{verificador?.estatusPersonal}}</li>
-            <li>Mesa</li>
-            <li>{{verificador?.mesaPersonal}}</li>
-          </ul>
-        </div>
+  <div class="row justify-content-md-center">
+    <div class="image-area">
+      <div class="img-wrapper">
+        <img src="/assets/user.jpg" style="width: 200px; height: 300px;" alt="img user">
+        <h2>{{verificador?.nombrePersona}}</h2>
+        <ul>
+          <li  class="atributo">Clave</li>
+          <li>{{verificador?.clavePersonal}}</li>
+          <li>Estatus</li>
+          <li>{{verificador?.estatusPersonal}}</li>
+          <li>Mesa</li>
+          <li>{{verificador?.mesaPersonal}}</li>
+        </ul>
       </div>
     </div>
-    <div class="row justify-content-md-center botones">
-      <button class="col-md-3 mx-4 btn" (click)="abrirModal(editarVerificador)">Editar</button>
-      <button class="col-md-3 btn" (click)="eliminarVerificador()">Eliminar</button>
-    </div>
-    <div class="row justify-content-md-center tabla">
-      <table>
-          <thead>
-            <th>#</th>
-            <th>Numero</th>
-            <th>Estatus</th>
-            <th>Fecha</th>
-          </thead>
-          <tbody>
-            <tr *ngFor="let picking of verificador?.listaPicking">
-              <td>{{picking.idPicking}}</td>
-              <td>{{picking.absEntry}}</td>
-              <td>{{picking.estatus}}</td>
-              <td>{{picking.pickDate}}</td>
-            </tr>
-          </tbody>
-        </table>
+  </div>
+  <div class="row justify-content-md-center botones">
+    <button class="button" (click)="abrirModal(editarSurtidor)">Editar</button>
+    <button class="button-2" (click)="eliminarVerificador()">Eliminar</button>
+  </div>
+  <div class="row justify-content-md-center tabla">
+    <div class="table-responsive">
+      <table class="table table-responsive table-borderless">
+        <thead>
+          <tr class="bg-light" style="font-family: 'Raleway-Bold';font-size: 20px;">
+            <th scope="col" width="5%">#</th>
+            <th scope="col" style="font-family: 'Raleway-Bold';"><i class="fa-solid fa-sort"></i>Orden</th>
+            <th scope="col" style="font-family: 'Raleway-Bold';"><i class="fa-solid fa-sort"></i>Fecha</th>
+            <th scope="col" style="font-family: 'Raleway-Bold';"><i class="fa-solid fa-sort"></i>Estatus</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let picking of verificador?.listaPicking">
+          <tr style="font-family: 'Raleway-Medium';font-size: 16px;">
+            <td style="font-family: 'Raleway-Medium';">{{picking.idPicking}}</td>
+            <td style="font-family: 'Raleway-Medium';">{{picking.absEntry}}</td>
+            <td style="font-family: 'Raleway-Medium';">{{picking.pickDate}}</td>
+            <td style="font-family: 'Raleway-Medium';">{{picking.estatus}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  
+</div>

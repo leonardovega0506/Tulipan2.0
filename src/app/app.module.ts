@@ -27,6 +27,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DatePipe } from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -58,6 +59,7 @@ import { DatePipe } from '@angular/common';
     MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

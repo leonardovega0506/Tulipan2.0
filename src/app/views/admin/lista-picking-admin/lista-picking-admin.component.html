@@ -14,15 +14,15 @@
         </mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <button class="button-arounder col-md-3" (click)="buscarPickingByFecha()"><i
-          class="fas fa-solid fa-magnifying-glass" style="font-family: 'Raleway-Medium';"></i>Buscar</button><br><br>
+      <button class="button-arounder col-md-3" (click)="buscarPickingByFecha()"><i class="magnifying-Glass"
+          style="font-family: 'Raleway-Medium';"></i>Buscar</button><br><br>
     </div>
     <div class="col">
       <mat-form-field>
         <mat-label style="font-family: 'Raleway-Medium';">Buscar picking...</mat-label>
         <input matInput [(ngModel)]="absEntry" class="input-data" style="font-family: 'Raleway-Medium';">
       </mat-form-field>
-      <button class="button-arounder col-md-3" (click)="buscarAbsEntry()"><i class="fas fa-solid fa-magnifying-glass"
+      <button class="button-arounder col-md-3" (click)="buscarAbsEntry()"><i class="magnifying-Glass"
           style="font-family: 'Raleway-Medium';"></i>Buscar</button>
     </div>
     <!--Tabla-->
@@ -30,7 +30,7 @@
       <div class="mb-2 d-flex justify-content-between align-items-center">
         <div class="position-relative">
           <span class="position-absolute search"><i class="fa fa-search"></i></span>
-          
+
         </div>
 
         <div class="px-2">
@@ -57,12 +57,12 @@
           <thead>
             <tr class="bg-light" style="font-family: 'Raleway-Bold';font-size: 20px;">
               <th scope="col" width="5%">#</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="fa-solid fa-sort"></i>Orden</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="fa-solid fa-sort"></i>Fecha</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="fa-solid fa-sort"></i>Estatus</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="fa-solid fa-sort"></i>Surtidor</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="fa-solid fa-sort"></i>Verificador</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="fa-solid fa-sort"></i>Detalles</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="iconoSort"></i>Orden</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="iconoSort"></i>Fecha</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="iconoSort"></i>Estatus</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="iconoSort"></i>Surtidor</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="iconoSort"></i>Verificador</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';">Detalles</th>
             </tr>
           </thead>
           <tbody *ngFor="let picking of listaPicking">
@@ -73,10 +73,10 @@
               <td style="font-family: 'Raleway-Medium';">{{picking.estatus}}</td>
               <td style="font-family: 'Raleway-Medium';">{{picking.surtidor?.nombrePersona}}</td>
               <td style="font-family: 'Raleway-Medium';">{{picking.Verificador?.nombrePersona}}</td>
-              <td style="font-family: 'Raleway-Medium';"><a class="btn button-arounder"
-                  style="font-family: 'Raleway-Medium';"
-                  (click)="obtenerDetallePicking(picking.idPicking,detallesModal)"><i
-                    class="fa-solid fa-info"></i>Detalles</a></td>
+              <td style="font-family: 'Raleway-Medium';"><a class="btn circle-Info" style="font-family: 'Raleway-Medium';"
+                  (click)="obtenerDetallePicking(picking.idPicking,detallesModal)"><span>
+                    Detalles
+                  </span></a></td>
             </tr>
           </tbody>
         </table>

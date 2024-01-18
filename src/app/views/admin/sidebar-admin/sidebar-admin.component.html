@@ -1,18 +1,9 @@
-<ul>
-  <li></li>
-  <li><a [routerLink]="'/admin/registro'">Registros</a></li>
-  <li><a [routerLink]="'/admin/surtidor'">Surtidores</a></li>
-  <li><a [routerLink]="'/admin/verificador'">Verificadores</a></li>
-</ul>
-<div>
-</div>
-
 <div class='dashboard'>
   <div class="dashboard-nav">
-    <header><a href="#!" class="menu-toggle"></a><a href="#" class="brand-logo"><span
+    <header><a [routerLink]="'/admin/'" class="menu-toggle"></a><a [routerLink]="'/admin/'" class="brand-logo"><span
           style="font-family: 'Raleway-Medium'; font-size: 30px;"><b>ANANDA</b></span></a></header>
     <nav class="dashboard-nav-list">
-      <a href="#" class="dashboard-nav-item"> <i class="fas fa-house"></i> Casa </a>
+      <a [routerLink]="'/admin/'" class="dashboard-nav-item"> <i class="fas fa-house"></i> Casa </a>
       <a [routerLink]="'/admin/picking'" class="dashboard-nav-item"><i class="fa-solid fa-boxes-stacked"></i> Picking
       </a>
       <a [routerLink]="'/admin/registro'" class="dashboard-nav-item"><i class="fa-solid fa-clipboard"></i>Registros </a>

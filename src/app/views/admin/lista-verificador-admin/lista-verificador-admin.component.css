@@ -347,4 +347,24 @@ form > * + * {
 .button-2:active {
   top: 1px;
 }
+.sort::before {
+  margin-right: 5px;
+  font: var(--fa-font-solid);
+   content: ' \f0dc';
+}
+.circle-Info::before {
+  margin-right: 5px;
+  font: var(--fa-font-solid);
+   content: ' \f05a';
+}
 
+.magnifying-Glass::before {
+  margin-right: 5px;
+  font: var(--fa-font-solid);
+   content: ' \f002';
+}
+.circle-User::before {
+  margin-right: 5px;
+  font: var(--fa-font-solid);
+   content: ' \f2bd';
+}

@@ -10,7 +10,7 @@
     <div class="mt-5">
       <div class="mb-2 d-flex justify-content-between align-items-center">
         <div class="position-relative">
-          <span class="position-absolute search"><i class="fa fa-search"></i></span>
+          <span class="position-absolute search"><i class=""></i></span>
         </div>
         <div class="px-2">
           <div class="col-sm-4">
@@ -35,12 +35,12 @@
         <table class="table table-responsive table-borderless">
           <thead>
             <tr class="bg-light">
-              <th scope="col" width="5%">#</th>
-              <th scope="col">Orden</th>
-              <th scope="col">Fecha</th>
-              <th scope="col">Estatus</th>
-              <th scope="col">Surtidor</th>
-              <th scope="col">Verificador</th>
+              <th scope="col" width="5%"><i class="sort"></i>#</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="sort"></i>Orden</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="sort"></i>Fecha</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="sort"></i>Estatus</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="sort"></i>Surtidor</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="sort"></i>Verificador</th>
               <th scope="col">Detalles</th>
             </tr>
           </thead>
@@ -52,7 +52,7 @@
                 <td>{{registro.estatusRegistro}}</td>
                 <td>{{registro.surtidor?.nombrePersona}}</td>
                 <td>{{registro.verificador?.nombrePersona}}</td>
-                <td><a class="btn button-arounder " [routerLink]="'/admin/registro/'+registro.idRegistro">Detalles</a></td>
+                <td><a class="btn" [routerLink]="'/admin/registro/'+registro.idRegistro"><i class="circle-Info"></i>Detalles</a></td>
               </tr>
           </tbody>
         </table>

@@ -22,7 +22,7 @@
     </div>
     <!--Footer-->
     <div class="modal-footer">
-      <button type="submit" class="btn button">Buscar</button>
+      <button type="submit" class="btn button">Crear</button>
       <button type="button" class="btn  button-2" (click)="modal.close()">Cerrar</button>
     </div>
   </form>
@@ -36,12 +36,12 @@
       </div>
     </div>
     <div class="row justify-content-md-center mt-5">
-      <button (click)="abrirModal(crearSurtidor)" class="button col-md-4">Crear Verificador</button>
+      <button (click)="abrirModal(crearSurtidor)" class="button col-md-4"><i class="circle-User"></i>Crear Verificador</button>
       <!--Tabla-->
       <div class="mt-5">
         <div class="mb-2 d-flex justify-content-between align-items-center">
           <div class="position-relative">
-            <span class="position-absolute search"><i class="fa fa-search"></i></span>
+            <span class="position-absolute search"><i class="magnifying-Glass"></i></span>
             <input class="form-control w-100" placeholder="Buscar por nombre">
           </div>
           <div class="px-2">
@@ -82,7 +82,8 @@
                 <td style="font-family: 'Raleway-Medium';">{{verificador.estatusPersonal}}</td>
                 <td style="font-family: 'Raleway-Medium';">{{verificador.clavePersonal}}</td>
                 <td style="font-family: 'Raleway-Medium';">{{verificador.mesaPersonal}}</td>
-                <td style="font-family: 'Raleway-Medium';"><a style="font-family: 'Raleway-Medium';" class="btn" [routerLink]="'/admin/verificador/'+verificador.idPersonal">Detalles</a></td>
+                <td style="font-family: 'Raleway-Medium';"><a style="font-family: 'Raleway-Medium';" class="btn" [routerLink]="'/admin/verificador/'+verificador.idPersonal">
+                  <i class="circle-Info"></i>Detalles</a></td>
               </tr>
             </tbody>
           </table>

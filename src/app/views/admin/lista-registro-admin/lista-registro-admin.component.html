@@ -35,26 +35,44 @@
         <table class="table table-responsive table-borderless">
           <thead>
             <tr class="bg-light">
-              <th scope="col" width="5%"><i class="sort"></i>#</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="sort"></i>Orden</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="sort"></i>Fecha</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="sort"></i>Estatus</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="sort"></i>Surtidor</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="sort"></i>Verificador</th>
+              <th scope="col" width="5%"><a (click)="sortColumn('idRegistro')"><i class="sort"></i></a>#</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><a (click)="sortColumn('docNum')"></a><i
+                  class="sort"></i>Orden</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><a (click)="sortColumn('dateSurtir')"><i
+                    class="sort"></i></a>Fecha</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><a (click)="sortColumn('estatusRegistro')"><i
+                    class="sort"></i></a>Estatus</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><a
+                  (click)="sortColumn('surtidor.nombrePersona')"></a><i class="sort"></i>Surtidor</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><a
+                  (click)="sortColumn('verificador.nombrePersona')"><i class="sort"></i></a>Verificador</th>
               <th scope="col">Detalles</th>
             </tr>
           </thead>
           <tbody *ngFor="let registro of listaRegistro">
-              <tr>
-                <td>{{registro.idRegistro}}</td>
-                <td>{{registro.docNum}}</td>
-                <td>{{registro.dateSurtir}}</td>
-                <td>{{registro.estatusRegistro}}</td>
-                <td>{{registro.surtidor?.nombrePersona}}</td>
-                <td>{{registro.verificador?.nombrePersona}}</td>
-                <td><a class="btn" [routerLink]="'/admin/registro/'+registro.idRegistro"><i class="circle-Info"></i>Detalles</a></td>
-              </tr>
+            <tr>
+              <td>{{registro.idRegistro}}</td>
+              <td>{{registro.docNum}}</td>
+              <td>{{registro.dateSurtir}}</td>
+              <td>{{registro.estatusRegistro}}</td>
+              <td>{{registro.surtidor?.nombrePersona}}</td>
+              <td>{{registro.verificador?.nombrePersona}}</td>
+              <td><a class="btn" [routerLink]="'/admin/registro/'+registro.idRegistro"><i
+                    class="circle-Info"></i>Detalles</a></td>
+            </tr>
           </tbody>
+          <!--Paginacion-->
+          <tfoot>
+            <div class="btn-paginacion">
+              <ul *ngFor="let page of getPageNumber(pages)">
+                <li>
+                  <input type="checkbox" id="paginacion{{page}}" class="checkbox-hidden"
+                    [checked]="page === currentPage" (change)="changePage(page)" />
+                  <label for="paginacion{{page}}">{{page}}</label>
+                </li>
+              </ul>
+            </div>
+          </tfoot>
         </table>
       </div>
     </div>

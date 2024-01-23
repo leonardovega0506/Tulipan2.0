@@ -15,6 +15,7 @@ export class ListaRegistroAdminComponent {
   currentPage: number = 1;
   sortDir: boolean = true;
   columnaOrdenada: string = '';
+  pages:number=0;
 
   ngOnInit(): void {
     this.cantidad = 10;
@@ -54,6 +55,7 @@ export class ListaRegistroAdminComponent {
       (data:any)=>{
         console.log(data);
         this.listaRegistro = data.content;
+        this.pages = data.allPage;
       }
     );
   }

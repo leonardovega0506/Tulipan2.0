@@ -27,6 +27,7 @@ export class ListaPickingAdminComponent implements OnInit {
   sortDir: boolean = true;
   columnaOrdenada: string = '';
   picking?: any;
+  pages:number=0;
 
   constructor(private andService: AndService, private modal: NgbModal, private datepipe: DatePipe) { }
 
@@ -118,10 +119,10 @@ export class ListaPickingAdminComponent implements OnInit {
 
   changePage(page: number) {
     this.currentPage = page;
-    this.rellenarPicking(this.currentPage - 1, this.cantidad, "idItem", this.sortDir);
+    this.rellenarPicking(this.currentPage - 1, this.cantidad, "idPicking", this.sortDir);
   }
 
-  getPageNumber(pages: number): number[] {
+  getPageNumbers(pages: number): number[] {
     return Array.from({ length: pages }, (_, index) => index + 1);
   }
 
@@ -138,8 +139,8 @@ export class ListaPickingAdminComponent implements OnInit {
   rellenarPicking(pagina, cantidad, orderBy, sortDir) {
     this.andService.listarPicking(pagina, cantidad, orderBy, sortDir).subscribe(
       (data: any) => {
-        console.log(data);
         this.listaPicking = data.content;
+        this.pages = data.allPage;
       }
     );
   }

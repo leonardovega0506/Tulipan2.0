@@ -23,6 +23,7 @@ export class ListaSurtidorAdminComponent {
   currentPage: number = 1;
   sortDir: boolean = true;
   columnaOrdenada: string = '';
+  pages:number=0;
 
 
   ngOnInit(): void {
@@ -62,6 +63,7 @@ export class ListaSurtidorAdminComponent {
       (data:any)=>{
         console.log(data);
         this.listaSurtidor = data.content;
+        this.pages = data.allPage;
       }
     );
   }

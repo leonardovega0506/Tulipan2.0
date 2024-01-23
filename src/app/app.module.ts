@@ -26,8 +26,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { DatePipe } from '@angular/common';
+import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
+import { NavbarLoginComponent } from './views/user/navbar-login/navbar-login.component';
+import { authInterceptorProviders } from './service/util/auth.interceptor';
 
 
 
@@ -46,7 +48,8 @@ import {MatIconModule} from '@angular/material/icon';
     DashboardUserComponent,
     DetallePickingUserComponent,
     LoginAdminComponent,
-    SidebarAdminComponent
+    SidebarAdminComponent,
+    NavbarLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     MatIconModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,
+    authInterceptorProviders,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,6 +22,7 @@ export class ListaVerificadorAdminComponent {
   currentPage: number = 1;
   sortDir: boolean = true;
   columnaOrdenada: string = '';
+  pages:number=0;
 
   ngOnInit(): void {
     this.cantidad = 10;
@@ -60,6 +61,7 @@ export class ListaVerificadorAdminComponent {
       (data:any)=>{
         console.log(data);
         this.listaVerificador = data.content;
+        this.pages = data.allPage;
       }
     );
   }

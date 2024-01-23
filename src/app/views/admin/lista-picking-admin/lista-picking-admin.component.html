@@ -56,12 +56,17 @@
         <table class="table table-responsive table-borderless">
           <thead>
             <tr class="bg-light" style="font-family: 'Raleway-Bold';font-size: 20px;">
-              <th scope="col" width="5%">#</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="iconoSort"></i>Orden</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="iconoSort"></i>Fecha</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="iconoSort"></i>Estatus</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="iconoSort"></i>Surtidor</th>
-              <th scope="col" style="font-family: 'Raleway-Bold';"><i class="iconoSort"></i>Verificador</th>
+              <th scope="col" width="5%"><a (click)="sortColumn('idPicking')"><i class="sort"></i></a>#</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><a (click)="sortColumn('absEntry')"><i
+                    class="sort"></i></a>Orden</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><a (click)="sortColumn('pickDate')"><i
+                    class="sort"></i></a>Fecha</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><a (click)="sortColumn('estatus')"><i
+                    class="sort"></i></a>Estatus</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><a (click)="sortColumn('surtidor.nombrePersona')"><i
+                    class="sort"></i></a>Surtidor</th>
+              <th scope="col" style="font-family: 'Raleway-Bold';"><a
+                  (click)="sortColumn('verificador.nombrePersona')"><i class="sort"></i></a>Verificador</th>
               <th scope="col" style="font-family: 'Raleway-Bold';">Detalles</th>
             </tr>
           </thead>
@@ -73,12 +78,25 @@
               <td style="font-family: 'Raleway-Medium';">{{picking.estatus}}</td>
               <td style="font-family: 'Raleway-Medium';">{{picking.surtidor?.nombrePersona}}</td>
               <td style="font-family: 'Raleway-Medium';">{{picking.Verificador?.nombrePersona}}</td>
-              <td style="font-family: 'Raleway-Medium';"><a class="btn circle-Info" style="font-family: 'Raleway-Medium';"
+              <td style="font-family: 'Raleway-Medium';"><a class="btn circle-Info"
+                  style="font-family: 'Raleway-Medium';"
                   (click)="obtenerDetallePicking(picking.idPicking,detallesModal)"><span>
                     Detalles
                   </span></a></td>
             </tr>
           </tbody>
+          <!--Paginacion-->
+          <tfoot>
+            <div class="btn-paginacion">
+              <ul *ngFor="let page of getPageNumbers(pages)">
+                <li>
+                  <input type="checkbox" id="paginacion{{page}}" class="checkbox-hidden"
+                    [checked]="page === currentPage" (change)="changePage(page)" />
+                  <label for="paginacion{{page}}">{{page}}</label>
+                </li>
+              </ul>
+            </div>
+          </tfoot>
         </table>
       </div>
     </div>

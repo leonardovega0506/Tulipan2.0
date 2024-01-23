@@ -1,1 +1,56 @@
-<p>detalle-picking-user works!</p>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <h1 class="titulo justify-content-md-center">Acciones</h1>
+    </div>
+  </div>
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-md-6">
+      <mat-form-field>
+        <mat-label style="font-family: 'Raleway-Medium';">Buscar picking...</mat-label>
+        <input [(ngModel)]="absEntry" matInput class="input-data" style="font-family: 'Raleway-Medium';">
+      </mat-form-field>
+      <button class="button-arounder col-md-3" (click)="buscarAbsEntry()"><i class="magnifying-Glass"
+          style="font-family: 'Raleway-Medium';"></i>Buscar</button>
+    </div>
+  </div>
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-md-6" *ngIf="surtidor">
+      <mat-form-field>
+        <mat-label style="font-family: 'Raleway-Medium';">Clave Surtidor</mat-label>
+        <input [(ngModel)]="claveSurtidor" matInput class="input-data" style="font-family: 'Raleway-Medium';">
+      </mat-form-field>
+      <button class="button-arounder col-md-3" (click)="asignarSurtidor()"><i class="magnifying-Glass"
+          style="font-family: 'Raleway-Medium';"></i>Asignar</button>
+    </div>
+    <div class="col-md-6" *ngIf="verificador">
+      <mat-form-field>
+        <mat-label style="font-family: 'Raleway-Medium';">Clave Verificador</mat-label>
+        <input [(ngModel)]="claveVerificador" matInput class="input-data" style="font-family: 'Raleway-Medium';">
+      </mat-form-field>
+      <button class="button-arounder col-md-3" (click)="asignarVerificador()"><i class="magnifying-Glass"
+          style="font-family: 'Raleway-Medium';"></i>Asignar</button>
+    </div>
+  </div>
+
+  <div class="row justify-content-md-center mt-5" *ngIf="botones">
+    <div class="col-md-6">
+      <button class="button col-md-3" (click)="registrarTiempoInicioSurtido()" *ngIf="estatus==1" ><i class="clock"
+          style="font-family: 'Raleway-Medium';"></i>Registrar Inicio Surtido</button>
+    </div>
+    <div class="col-md-6" *ngIf="estatus=='2'">
+      <button (click)="registrarTiempoTerminoSurtido()" class="button col-md-3"><i class="clock"
+          style="font-family: 'Raleway-Medium';"></i>Registrar Termino Surtido</button>
+    </div>
+  </div>
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-md-6" *ngIf="estatus == '3' ">
+      <button (click)="registrarTiempoInicioVerificado()" class="button col-md-3"><i class="clock"
+          style="font-family: 'Raleway-Medium';"></i>Registrar Inicio Verificado</button>
+    </div>
+    <div class="col-md-6" *ngIf="estatus == '4'">
+      <button (click)="registrarTiempoTerminoVerificado()" class="button col-md-3"><i class="clock"
+          style="font-family: 'Raleway-Medium';"></i>Registrar Termino Verificado</button>
+    </div>
+  </div>
+</div>

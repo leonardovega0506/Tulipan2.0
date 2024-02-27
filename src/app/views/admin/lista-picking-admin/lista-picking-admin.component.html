@@ -14,6 +14,12 @@
         </mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+      <br><br>
+      <select [(ngModel)]="tipo">
+        <option value="Mayoreo">Mayoreo</option>
+        <option value="Store">Store</option>
+      </select>
+      <br><br>
       <button class="button-arounder col-md-3" (click)="buscarPickingByFecha()"><i class="magnifying-Glass"
           style="font-family: 'Raleway-Medium';"></i>Buscar</button><br><br>
     </div>

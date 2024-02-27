@@ -12,24 +12,24 @@ export class AndService {
   constructor(private http:HttpClient) { }
 
   /* **Picking** */
-  public asignarSurtidor(claveSurtidor,absEntry){
-    return this.http.post(this.baseAnd+"/picking/surtidor?absEntry="+absEntry+"&claveSurtidor="+claveSurtidor,absEntry);
+  public asignarSurtidor(claveSurtidor,absEntry,tipo){
+    return this.http.post(this.baseAnd+"/picking/surtidor?absEntry="+absEntry+"&claveSurtidor="+claveSurtidor+"&tipo="+tipo,absEntry);
   }
-  public asignarVerificador(claveVerificador,absEntry){
-    return this.http.post(this.baseAnd+"/picking/verificador?absEntry="+absEntry+"&claveVerificador="+claveVerificador,absEntry);
+  public asignarVerificador(claveVerificador,absEntry,tipo){
+    return this.http.post(this.baseAnd+"/picking/verificador?absEntry="+absEntry+"&claveVerificador="+claveVerificador+"&tipo="+tipo,absEntry);
   }
   public listarPicking(pageNumber,pageSize,orderBy,sortDir){
     return this.http.get(this.baseAnd+"/picking?orderBy="+orderBy+"&pageNo="+pageNumber+"&pageSize="+pageSize+"&sortDir="+sortDir);
   }
-  public listarPickingByDate(pageNumber,pageSize,orderBy,sortDir,fecha){
-    return this.http.get(this.baseAnd+"/picking/fecha?date="+fecha+"&orderBy="+orderBy+"&pageNo="+pageNumber+"&pageSize="+pageSize+"&sortDir="+sortDir);
+  public listarPickingByDate(pageNumber,pageSize,orderBy,sortDir,fecha,tipo){
+    return this.http.get(this.baseAnd+"/picking/fecha?date="+fecha+"&orderBy="+orderBy+"&pageNo="+pageNumber+"&pageSize="+pageSize+"&sortDir="+sortDir+"&tipo="+tipo);
   }
 
-  public obtenerPickingByAbsentry(absEntry){
-    return this.http.get(this.baseAnd+"/picking/absEntry?absEntry="+absEntry);
+  public obtenerPickingByAbsentry(absEntry,tipo){
+    return this.http.get(this.baseAnd+"/picking/absEntry?absEntry="+absEntry+"&tipo="+tipo);
   }
 
-  public obtenerPickingById(idPicking){
+  public obtenerPickingById(idPicking,tipo){
     return this.http.get(this.baseAnd+"/picking/"+idPicking);
   }
 
@@ -52,20 +52,20 @@ export class AndService {
     return this.http.delete(this.baseAnd+"/surtidor/"+idSurtidor);
   }
 
-  generarTiempoIniciosurtido(registro){
-    return this.http.put(this.baseAnd+"/registro/inicio_surtido",registro);
+  generarTiempoIniciosurtido(registro,tipo){
+    return this.http.put(this.baseAnd+"/registro/inicio_surtido?tipo="+tipo,registro);
   }
 
-  generarTiempoTerminoSurtido(registro){
-    return this.http.put(this.baseAnd+"/registro/termino_surtido",registro);
+  generarTiempoTerminoSurtido(registro,tipo){
+    return this.http.put(this.baseAnd+"/registro/termino_surtido?tipo="+tipo,registro);
   }
 
-  generarTiempoInicioVerificado(registro){
-    return this.http.put(this.baseAnd+"/registro/inicio_verificado",registro);
+  generarTiempoInicioVerificado(registro,tipo){
+    return this.http.put(this.baseAnd+"/registro/inicio_verificado?tipo="+tipo,registro);
   }
   
-  generarTiempoTerminoVerificado(registro){
-    return this.http.put(this.baseAnd+"/registro/termino_verificado",registro);
+  generarTiempoTerminoVerificado(registro,tipo){
+    return this.http.put(this.baseAnd+"/registro/termino_verificado?tipo="+tipo,registro);
   }
 
   public guardarSurtidor(surtidor){

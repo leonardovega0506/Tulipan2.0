@@ -16,6 +16,7 @@ import { from, catchError } from 'rxjs';
 })
 export class ListaPickingAdminComponent implements OnInit {
 
+  tipo:any;
   listaPicking: any[];
   absEntry: any;
   fecha: string = "";
@@ -56,7 +57,7 @@ export class ListaPickingAdminComponent implements OnInit {
           },
         })
         from(
-          this.andService.listarPickingByDate("0", "10", "idPicking", "asc", latest_date)
+          this.andService.listarPickingByDate("0", "10", "idPicking", "asc", latest_date,this.tipo)
         ).pipe().subscribe((data: any) => {
           Swal.close();
           if(data!=null){
@@ -96,7 +97,7 @@ export class ListaPickingAdminComponent implements OnInit {
           },
         });
         from(
-          this.andService.obtenerPickingByAbsentry(this.absEntry)
+          this.andService.obtenerPickingByAbsentry(this.absEntry,this.tipo)
         ).subscribe(
           (data) => {
             Swal.close();
@@ -128,7 +129,7 @@ export class ListaPickingAdminComponent implements OnInit {
 
   obtenerDetallePicking(idPickingDetalle, detallesModal) {
     this.modal.open(detallesModal);
-    this.andService.obtenerPickingById(idPickingDetalle).subscribe(
+    this.andService.obtenerPickingById(idPickingDetalle,this.tipo).subscribe(
       (data) => {
         console.log(data);
         this.picking = data;

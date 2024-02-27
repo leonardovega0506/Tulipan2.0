@@ -10,6 +10,13 @@
         <mat-label style="font-family: 'Raleway-Medium';">Buscar picking...</mat-label>
         <input [(ngModel)]="absEntry" matInput class="input-data" style="font-family: 'Raleway-Medium';">
       </mat-form-field>
+      <br><br>
+      <label for="">Tipo</label>&nbsp;
+      <select  [(ngModel)]="tipo">
+        <option value='Mayoreo'>Mayoreo</option>
+        <option value="Store">Store</option>
+      </select>
+      <br><br>
       <button class="button-arounder col-md-3" (click)="buscarAbsEntry()"><i class="magnifying-Glass"
           style="font-family: 'Raleway-Medium';"></i>Buscar</button>
     </div>
@@ -33,9 +40,9 @@
     </div>
   </div>
 
-  <div class="row justify-content-md-center mt-5" *ngIf="botones">
+  <div class="row justify-content-md-center mt-5" *ngIf="botones == true">
     <div class="col-md-6">
-      <button class="button col-md-3" (click)="registrarTiempoInicioSurtido()" *ngIf="estatus==1" ><i class="clock"
+      <button class="button col-md-3" (click)="registrarTiempoInicioSurtido()" *ngIf="estatus=='1'" ><i class="clock"
           style="font-family: 'Raleway-Medium';"></i>Registrar Inicio Surtido</button>
     </div>
     <div class="col-md-6" *ngIf="estatus=='2'">

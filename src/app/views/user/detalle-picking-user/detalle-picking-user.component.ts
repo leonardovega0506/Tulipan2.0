@@ -20,6 +20,7 @@ export class DetallePickingUserComponent implements OnInit {
   claveVerificador:any;
   botones:boolean = true;
   registro:any;
+  tipo:any;
 
   ngOnInit(): void {
     this.absEntry = "";
@@ -51,7 +52,7 @@ export class DetallePickingUserComponent implements OnInit {
           },
         });
         from(
-          this.andService.obtenerPickingByAbsentry(this.absEntry)
+          this.andService.obtenerPickingByAbsentry(this.absEntry,this.tipo)
         ).subscribe(
           (data) => {
             Swal.close();
@@ -64,11 +65,13 @@ export class DetallePickingUserComponent implements OnInit {
               })
             }
             this.picking = data;
-            this.registro = this.picking?.registro;
-            console.log(this.picking);
-            this.estatus = this.picking.estatus;
+            this.tipo = this.picking.tipoCanal;
+            this.estatus = this.picking?.estatus;
             console.log(this.estatus);
-            this.botones = true;
+            this.registro = this.picking?.registro;
+            if(this.picking.surtidor!=null || this.picking.verificador !=null){
+              this.botones = true;
+            }
             if (this.picking.surtidor == null) {
               this.surtidor = true;
             }
@@ -100,7 +103,7 @@ export class DetallePickingUserComponent implements OnInit {
           },
         });
         from(
-         this.andService.asignarSurtidor(this.claveSurtidor,this.absEntry)
+         this.andService.asignarSurtidor(this.claveSurtidor,this.absEntry,this.tipo)
         ).subscribe(
           (data)=>{
             console.log(data);
@@ -109,7 +112,10 @@ export class DetallePickingUserComponent implements OnInit {
               showCloseButton:false,
               text:'Exito al asignar el surtidor',
               timer:2000
-            })
+            });
+            this.absEntry = "";
+            this.surtidor = false;
+            this.verificador = false;
           },
           (error)=>{
             Swal.fire('Error',"Error al asignar", 'error');
@@ -137,16 +143,18 @@ export class DetallePickingUserComponent implements OnInit {
           },
         });
         from(
-         this.andService.asignarVerificador(this.claveVerificador,this.absEntry)
+         this.andService.asignarVerificador(this.claveVerificador,this.absEntry,this.tipo)
         ).subscribe(
           (data)=>{
             console.log(data);
             Swal.fire({
               title:'Exito',
+              icon:'success',
               showCloseButton:false,
               text:'Exito al asignar el Verificador',
               timer:2000
-            })
+            });
+            this.verificador = false;
           },
           (error)=>{
             Swal.fire('Error',"Error al asignar", 'error');
@@ -173,7 +181,7 @@ export class DetallePickingUserComponent implements OnInit {
           },
         });
         from(
-          this.andService.generarTiempoIniciosurtido(this.registro)
+          this.andService.generarTiempoIniciosurtido(this.registro,this.tipo)
         ).subscribe(
           (data)=>{
             console.log(data);
@@ -210,7 +218,7 @@ export class DetallePickingUserComponent implements OnInit {
           },
         });
         from(
-          this.andService.generarTiempoTerminoSurtido(this.registro)
+          this.andService.generarTiempoTerminoSurtido(this.registro,this.tipo)
         ).subscribe(
           (data)=>{
             Swal.fire({
@@ -246,7 +254,7 @@ export class DetallePickingUserComponent implements OnInit {
           },
         });
         from(
-          this.andService.generarTiempoTerminoVerificado(this.registro)
+          this.andService.generarTiempoInicioVerificado(this.registro,this.tipo)
         ).subscribe(
           (data)=>{
             Swal.fire({
@@ -282,7 +290,7 @@ export class DetallePickingUserComponent implements OnInit {
           },
         });
         from(
-          this.andService.generarTiempoTerminoVerificado(this.registro)
+          this.andService.generarTiempoTerminoVerificado(this.registro,this.tipo)
         ).subscribe(
           (data)=>{
             Swal.fire({
